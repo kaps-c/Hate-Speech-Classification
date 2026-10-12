@@ -14,7 +14,7 @@ python classifier.py download
 python classifier.py train
 ```
 
-On macOS/Linux, activate with `source .venv/bin/activate`. On Windows, you can also use `.\.venv\Scripts\python.exe` directly. For the notebook, select this environment in your notebook editor.
+On macOS/Linux, activate with `source .venv/bin/activate`. On Windows, you can also use `.\.venv\Scripts\python.exe` directly. For the notebook, select this environment and run all cells to reproduce the evaluation tables and `results.png`. The saved notebook includes executed outputs for viewing on GitHub.
 
 Download verifies and caches the dataset. Training takes a few minutes on CPU and saves metrics, holdout predictions, and the fitted model under `artifacts/`. Rerunning replaces these outputs; use `--output-dir` to keep separate runs.
 
@@ -37,6 +37,8 @@ Measured on **4,954 held-out posts**:
 | --- | ---: | ---: | ---: | ---: |
 | Gaussian Naive Bayes | 0.9231 | 0.6938 | 0.3753 | 0.5000 |
 | Always predict non-hate | 0.9423 | 0.4851 | 0.0000 | 0.0000 |
+
+![Holdout confusion matrix and model-versus-baseline metrics](results.png)
 
 The model catches half the labeled hate speech, but most flags are false positives. This historical dataset contains offensive text and [documented bias](https://arxiv.org/abs/1905.12516). Treat this as a baseline, not a validated moderation system.
 
